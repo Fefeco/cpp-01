@@ -6,14 +6,15 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:46:58 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/28 10:59:54 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/29 12:55:38 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 
-int	main() {
+int	main( void ) {
+	
 	std::string		ex02 = "HI THIS IS BRAIN";
 	std::string*	stringPTR = &ex02;
 	std::string&	stringREF = ex02;

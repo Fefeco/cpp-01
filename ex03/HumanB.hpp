@@ -6,20 +6,27 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:13:27 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/28 13:35:17 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/29 12:46:55 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <string>
 #include "Weapon.hpp"
-#include "HumanA.hpp"
 
-class HumanB : public HumanA {
+class HumanB {
 
 public:
 
 	HumanB( std::string name );
 	~HumanB( void );
-	void setWeapon( Weapon* weaponType );
+	
+	void attack( void );
+	void setWeapon( Weapon& weaponType );
+
+
+private:
+
+	std::string _name;
+	Weapon*		_weaponType;
 };
