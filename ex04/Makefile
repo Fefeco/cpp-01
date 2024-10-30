@@ -6,7 +6,7 @@
 #    By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 10:12:56 by fcarranz          #+#    #+#              #
-#    Updated: 2024/10/30 20:59:45 by fcarranz         ###   ########.fr        #
+#    Updated: 2024/10/30 21:29:52 by fcarranz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,20 @@ OBJ_FLAGS = $(CFLAGS) -MMD -g -c
 SRC=main.cpp \
 	replaceStr.cpp
 
+TSRC=test.cpp \
+	 replaceStr.cpp
+
 OBJ=$(SRC:.cpp=.o)
 DEP=$(SRC:.cpp=.d)
 
 OBJS= $(addprefix $(OBJ_DIR), $(OBJ))
 DEPS= $(addprefix $(DEP_DIR), $(DEP))
+
+TOBJ=$(TSRC:.cpp=.o)
+TDEP=$(TSRC:.cpp=.d)
+
+TOBJS= $(addprefix $(OBJ_DIR), $(TOBJ))
+TDEPS= $(addprefix $(DEP_DIR), $(TDEP))
 
 .PHONY: all clean fclean re
 
@@ -32,6 +41,9 @@ all: $(NAME)
 
 $(NAME): Makefile $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
+
+test: Makefile $(TOBJS)
+	$(CC) $(CFLAGS) $(TOBJS) -o $@
 
 $(OBJ_DIR)%.o: %.cpp
 	@mkdir -p $(OBJ_DIR) $(DEP_DIR)
@@ -42,8 +54,8 @@ clean:
 	rm -rf $(OBJ_DIR) $(DEP_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) test
 
 re: fclean all
 
--include $(DEPS)
+-include $(DEPS) $(TDEPS)
