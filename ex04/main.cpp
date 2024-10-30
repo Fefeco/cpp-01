@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:14:35 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/30 14:43:25 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/30 15:14:46 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,7 @@
 #include <string>
 #include <fstream>
 
-std::string	replace_line( const std::string& line, const std::string& s1, const std::string& s2 ) {
-
-	size_t	i = 0;
-	std::string newLine;
-	std::string	substr = line.substr( i, i + s1.length() );
-
-	if ( !s1.length() )
-		return line;
-
-	while ( i + s1.length() <= line.length() ) {
-		if ( substr.compare( s1 ) == 0 ) {
-			newLine += s2;
-			i += s1.length();
-		}
-		else
-			newLine += line.at( i++ );
-		substr = line.substr( i, s1.length() );
-	}
-
-	if ( i < line.length() ) {
-		newLine += line.substr( i, line.length() - i );
-	}
-	return newLine;
-}
+std::string	replaceLine( const std::string& line, const std::string& s1, const std::string& s2 );
 
 int main( int argc, char** argv ) {
 	
@@ -73,7 +50,8 @@ int main( int argc, char** argv ) {
 	while ( !file.eof() )
 	{
 		std::getline( file, line );
-		newFile << replace_line(line, std::string( argv[2] ), std::string( argv[3] )) << std::endl;;
+		newFile << replaceLine( line, std::string( argv[2] ), std::string( argv[3] ) )
+				<< std::endl;;
 	}
 
 	file.close();
