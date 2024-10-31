@@ -1,0 +1,18 @@
+17,18c17,18
+< CFLAGS=-Wall -Wextra -Werror -std=c++98
+< OBJ_FLAGS = $(CFLAGS) -MMD -g -c
+---
+> COPTIONS=-Wall -Wextra -Werror -std=c++98
+> OBJ_OPTIONS = $(COPTIONS) -MMD -g -c
+44c44
+< 	$(CC) $(CFLAGS) $(OBJS) -o $@
+---
+> 	$(CC) $(COPTIONS) $(OBJS) -o $@
+47c47
+< 	$(CC) $(CFLAGS) $(TOBJS) -o $@
+---
+> 	$(CC) $(COPTIONS) $(TOBJS) -o $@
+51c51
+< 	$(CC) $(OBJ_FLAGS) $< -o $@
+---
+> 	$(CC) $(OBJ_OPTIONS) $< -o $@

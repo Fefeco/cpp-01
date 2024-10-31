@@ -6,7 +6,7 @@
 /*   By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:11:17 by fcarranz          #+#    #+#             */
-/*   Updated: 2024/10/31 20:39:09 by fcarranz         ###   ########.fr       */
+/*   Updated: 2024/10/31 20:56:12 by fcarranz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,36 @@ int main( void ) {
 
 	std::cout << std::setw( 70 ) << "Testing replace \"-include\" for \"-exclude\"..." << std::flush;
 	std::system( "sleep 1 && ./ex04 Makefile -include -exclude && diff Makefile Makefile.replace > testFile" );
-	if ( std::system( "diff testFile testFile1 > /dev/null" ) != 1 ) {
+	if ( std::system( "diff testFile testFile1 > /dev/null" ) != 0 ) {
 		std::cout << WRONG << "[𐄂]"<< RST << std::endl
 				  << "\nExpected differences:" << std::endl << std::flush;
 		printDiffColor( "testFile1" );
+		std::cout << "\nGot:" << std::endl;
+		printDiffColor( "testFile" );
+	} else {
+		std::cout << SUCCESS << "[✓]" <<  RST << std::endl;
+	}
+	std::system( "rm testFile" );
+
+	std::cout << std::setw( 70 ) << "Testing replace \"FLAGS\" for \"OPTIONS\"..." << std::flush;
+	std::system( "sleep 1 && ./ex04 Makefile FLAGS OPTIONS && diff Makefile Makefile.replace > testFile" );
+	if ( std::system( "diff testFile testFile2 > /dev/null" ) != 0 ) {
+		std::cout << WRONG << "[𐄂]"<< RST << std::endl
+				  << "\nExpected differences:" << std::endl << std::flush;
+		printDiffColor( "testFile2" );
+		std::cout << "\nGot:" << std::endl;
+		printDiffColor( "testFile" );
+	} else {
+		std::cout << SUCCESS << "[✓]" <<  RST << std::endl;
+	}
+	std::system( "rm testFile" );
+
+	std::cout << std::setw( 70 ) << "Testing replace \"OBJ\" for nothing ( '' )..." << std::flush;
+	std::system( "sleep 1 && ./ex04 Makefile OBJ '' && diff Makefile Makefile.replace > testFile" );
+	if ( std::system( "diff testFile testFile3 > /dev/null" ) != 0 ) {
+		std::cout << WRONG << "[𐄂]"<< RST << std::endl
+				  << "\nExpected differences:" << std::endl << std::flush;
+		printDiffColor( "testFile3" );
 		std::cout << "\nGot:" << std::endl;
 		printDiffColor( "testFile" );
 	} else {

@@ -1,0 +1,48 @@
+14c14
+< OBJ_DIR=objs/
+---
+> _DIR=objs/
+18c18
+< OBJ_FLAGS = $(CFLAGS) -MMD -g -c
+---
+> _FLAGS = $(CFLAGS) -MMD -g -c
+27c27
+< OBJ=$(SRC:.cpp=.o)
+---
+> =$(SRC:.cpp=.o)
+30c30
+< OBJS= $(addprefix $(OBJ_DIR), $(OBJ))
+---
+> S= $(addprefix $(_DIR), $())
+33c33
+< TOBJ=$(TSRC:.cpp=.o)
+---
+> T=$(TSRC:.cpp=.o)
+36c36
+< TOBJS= $(addprefix $(OBJ_DIR), $(TOBJ))
+---
+> TS= $(addprefix $(_DIR), $(T))
+43,44c43,44
+< $(NAME): Makefile $(OBJS)
+< 	$(CC) $(CFLAGS) $(OBJS) -o $@
+---
+> $(NAME): Makefile $(S)
+> 	$(CC) $(CFLAGS) $(S) -o $@
+46,47c46,47
+< test: Makefile $(TOBJS)
+< 	$(CC) $(CFLAGS) $(TOBJS) -o $@
+---
+> test: Makefile $(TS)
+> 	$(CC) $(CFLAGS) $(TS) -o $@
+49,51c49,51
+< $(OBJ_DIR)%.o: %.cpp
+< 	@mkdir -p $(OBJ_DIR) $(DEP_DIR)
+< 	$(CC) $(OBJ_FLAGS) $< -o $@
+---
+> $(_DIR)%.o: %.cpp
+> 	@mkdir -p $(_DIR) $(DEP_DIR)
+> 	$(CC) $(_FLAGS) $< -o $@
+55c55
+< 	rm -rf $(OBJ_DIR) $(DEP_DIR)
+---
+> 	rm -rf $(_DIR) $(DEP_DIR)
