@@ -6,18 +6,19 @@
 #    By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 10:12:56 by fcarranz          #+#    #+#              #
-#    Updated: 2024/10/24 12:37:05 by fcarranz         ###   ########.fr        #
+#    Updated: 2024/10/31 21:32:01 by fcarranz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=ex00
+NAME=ex05
 OBJ_DIR=objs/
 DEP_DIR=deps/
 CC=c++
 CFLAGS=-Wall -Wextra -Werror -std=c++98
 OBJ_FLAGS = $(CFLAGS) -MMD -g -c
 
-SRC=main.cpp
+SRC=main.cpp \
+	Harl.cpp
 
 OBJ=$(SRC:.cpp=.o)
 DEP=$(SRC:.cpp=.d)
