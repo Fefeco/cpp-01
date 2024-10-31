@@ -6,7 +6,7 @@
 #    By: fcarranz <fcarranz@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 10:12:56 by fcarranz          #+#    #+#              #
-#    Updated: 2024/10/30 21:29:52 by fcarranz         ###   ########.fr        #
+#    Updated: 2024/10/31 20:29:49 by fcarranz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC=main.cpp \
 	replaceStr.cpp
 
 TSRC=test.cpp \
-	 replaceStr.cpp
+	 replaceStr.cpp \
+	 printDiffColor.cpp
 
 OBJ=$(SRC:.cpp=.o)
 DEP=$(SRC:.cpp=.d)
